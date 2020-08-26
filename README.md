@@ -1,6 +1,6 @@
 # Dynamic / Multidimensional / Generic Arrays
 
-Not: c# ta düzensiz diziler (jagged arrays) de var biliyorum ama bu yazının konusu dışında kaldığından bundan bahsetmeyeceğim.
+> Not: c# ta düzensiz diziler (jagged arrays) de var biliyorum ama bu yazının konusu dışında kaldığından bundan bahsetmeyeceğim.
 
 C# ta malumunuz tek boyutlu bir dizi şu şekilde tanımlanıyor:
 
@@ -132,7 +132,7 @@ ya da değer atamak istersek:
 // aşağıdaki kod da aynı işlemi yapar
 dizi3[17] = 500;</pre>
 
-Not:  
+> Not:  
 c# ta indisler -genel olarak- 0'dan başlar.  
 klasik dizilerde indislerin alt ve üst değerleri farklı olabilir.  
 (10 elemanlı bir dizinin indisleri -5..0..+4 olabilir.)
