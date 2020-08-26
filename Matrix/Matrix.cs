@@ -10,16 +10,16 @@ namespace DA
         private int max; // toplam eleman sayısı = d[0] x d[1] x d[2] x ... x d[n-1]
 
         /// <summary>
-        /// Matrix'in boyutlarının eleman sayıları
+        /// Matrix boyutlarını vererek yeni bir matrix oluşturur
         /// </summary>
-        /// <param name="a"></param>
-        public Matrix(params int[] a) // boyutlar
+        /// <param name="x"></param>
+        public Matrix(params int[] x) // boyutlar
         {
-            Resize(a);
+            Resize(x);
         }
 
         /// <summary>
-        /// Boş matrix
+        /// Boş matrix oluşturur
         /// </summary>
         public Matrix()
         {
@@ -27,7 +27,7 @@ namespace DA
         }
 
         /// <summary>
-        /// Matrix'i sıfırlama
+        /// Matrix'i sıfırlar
         /// </summary>
         public void Clear()
         {
@@ -37,16 +37,16 @@ namespace DA
             max = 0;
         }
 
-        private void Resize(params int[] a)
+        private void Resize(params int[] x)
         {
-            if (a.Length == 0) throw new Exception("Boyut hatası");
-            n = a.Length;
+            if (x.Length == 0) throw new Exception("Boyut hatası");
+            n = x.Length;
             d = new int[n];
             max = 1;
             for (int i = 0; i < n; i++)
             {
-                if (a[i] < 0) throw new Exception("Boyut hatası");
-                d[i] = a[i];
+                if (x[i] < 0) throw new Exception("Boyut hatası");
+                d[i] = x[i];
                 max *= d[i];
             }
             dizi = new T[max];
@@ -72,18 +72,18 @@ namespace DA
             dizi[Pos(x)] = t;
         }
 
-        private int Pos(params int[] a)
+        private int Pos(params int[] x)
         {
             if (n < 0) throw new Exception("Matrix hazır değil");
-            if (a.Length != d.Length) throw new Exception("Boyut hatası");
+            if (x.Length != d.Length) throw new Exception("Boyut hatası");
             int pos = 0;
             for (int i = 0; i < n; i++)
             {
-                if (a[i] >= d[i]) throw new Exception("Boyut hatası");
-                int x = 1;
+                if (x[i] >= d[i]) throw new Exception("Boyut hatası");
+                int p = 1;
                 for (int j = i + 1; j < n; j++)
-                    x *= d[j];
-                pos += a[i] * x;
+                    p *= d[j];
+                pos += x[i] * p;
             }
             return pos;
         }
@@ -91,23 +91,23 @@ namespace DA
         /// <summary>
         /// Matrix elemanlarına indexer üzerinden erişim
         /// </summary>
-        /// <param name="a"></param>
+        /// <param name="x"></param>
         /// <returns></returns>
-        public T this[int a]
+        public T this[int x]
         {
-            get { return dizi[a]; }
-            set { dizi[a] = value; }
+            get { return dizi[x]; }
+            set { dizi[x] = value; }
         }
 
         /// <summary>
         /// Matrix elemanlarına indexer üzerinden erişim
         /// </summary>
-        /// <param name="a"></param>
+        /// <param name="x"></param>
         /// <returns></returns>
-        public T this[params int[] a]
+        public T this[params int[] x]
         {
-            get { return GetValue(a); }
-            set { SetValue(value, a); }
+            get { return GetValue(x); }
+            set { SetValue(value, x); }
         }
 
         /// <summary>
