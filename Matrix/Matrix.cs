@@ -9,16 +9,26 @@ namespace DA
         private T[] dizi; // tutulacak değerler
         private int max; // toplam eleman sayısı = d[0] x d[1] x d[2] x ... x d[n-1]
 
+        /// <summary>
+        /// Matrix'in boyutlarının eleman sayıları
+        /// </summary>
+        /// <param name="a"></param>
         public Matrix(params int[] a) // boyutlar
         {
             Resize(a);
         }
 
+        /// <summary>
+        /// Boş matrix
+        /// </summary>
         public Matrix()
         {
             Clear();
         }
 
+        /// <summary>
+        /// Matrix'i sıfırlama
+        /// </summary>
         public void Clear()
         {
             n = -1;
@@ -42,14 +52,24 @@ namespace DA
             dizi = new T[max];
         }
 
-        public T GetValue(params int[] a)
+        /// <summary>
+        /// Matrix'in bir elemanının değerini döndürür
+        /// </summary>
+        /// <param name="x">Elemanın pozisyonu</param>
+        /// <returns></returns>
+        public T GetValue(params int[] x)
         {
-            return dizi[Pos(a)];
+            return dizi[Pos(x)];
         }
 
-        public void SetValue(T t, params int[] a)
+        /// <summary>
+        /// Matrix'in bir elemanına değer atar.
+        /// </summary>
+        /// <param name="t">Değer</param>
+        /// <param name="x">Elemanın pozisyonu</param>
+        public void SetValue(T t, params int[] x)
         {
-            dizi[Pos(a)] = t;
+            dizi[Pos(x)] = t;
         }
 
         private int Pos(params int[] a)
@@ -68,18 +88,31 @@ namespace DA
             return pos;
         }
 
+        /// <summary>
+        /// Matrix elemanlarına indexer üzerinden erişim
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public T this[int a]
         {
             get { return dizi[a]; }
             set { dizi[a] = value; }
         }
 
+        /// <summary>
+        /// Matrix elemanlarına indexer üzerinden erişim
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
         public T this[params int[] a]
         {
             get { return GetValue(a); }
             set { SetValue(value, a); }
         }
 
+        /// <summary>
+        /// Matrix'in eleman sayısı
+        /// </summary>
         public int Length
         {
             get
@@ -88,6 +121,9 @@ namespace DA
             }
         }
 
+        /// <summary>
+        /// Matrix'in boyut sayısı
+        /// </summary>
         public int GetDimension
         {
             get
@@ -97,6 +133,11 @@ namespace DA
             }
         }
 
+        /// <summary>
+        /// Matrix'in x. boyutunun eleman sayısı
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public int GetLength(int x)
         {
             if (n < 0 || n <= x) throw new Exception("Boyut hatası");
