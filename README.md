@@ -1,3 +1,5 @@
+# Dynamic / Multidimensional / Generic Arrays
+
 Not: c# ta düzensiz diziler (jagged arrays) de var biliyorum ama bu yazının konusu dışında kaldığından bundan bahsetmeyeceğim.
 
 C# ta malumunuz tek boyutlu bir dizi şu şekilde tanımlanıyor:
